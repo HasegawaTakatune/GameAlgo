@@ -8,22 +8,27 @@ public class Player : MonoBehaviour {
 
 	// 移動速度
 	[SerializeField]
-	float speed = 1.5f;
-	float jumpSpeed;
-	float time;
-
+	float speed = 0.1f;
+	// 当たり判定
 	[SerializeField]
 	RaycastHit2D isGrounded;
-	bool hitRight;
-	bool hitLeft;
-	[SerializeField]
+	bool hitceiling;
+	RaycastHit2D R_Hit;
+	RaycastHit2D L_Hit;
+	// 走り制御
 	bool isRunning;
 	Vector3 groundPos;
 	// ジャンプ制御
 	bool jumping = false;
 	byte jumpType = None;
+	// ジャンプ速度
+	float jumpSpeed; 			// Normal 5 	:: Power 5.5
+	float kickSpeed = 0.05f; 	// Normal 0.05 :: Power 0.15
+	float time;
 	// 着地
 	bool landing = false;
+	//
+	Ground ground;
 
 	// Use this for initialization
 	void Start () {
@@ -58,10 +63,10 @@ public class Player : MonoBehaviour {
 		}
 
 		// キー入力によりベクトルを加算
-		if ((Input.GetKey (KeyCode.RightArrow) || Input.GetKey (KeyCode.D)) && !hitRight) {
+		if ((Input.GetKey (KeyCode.RightArrow) || Input.GetKey (KeyCode.D)) && !R_Hit) {
 			velocity.x += speed;
 		}
-		if ((Input.GetKey (KeyCode.LeftArrow) || Input.GetKey (KeyCode.A)) && !hitLeft) {
+		if ((Input.GetKey (KeyCode.LeftArrow) || Input.GetKey (KeyCode.A)) && !L_Hit) {
 			velocity.x += -speed;
 		}
 		// 高速移動
@@ -80,23 +85,31 @@ public class Player : MonoBehaviour {
 	void Jump(){
 		//スペースキーでジャンプ
 		if (Input.GetKeyDown (KeyCode.Space)) {
-			//地面についているときだけジャンプ
-			if (isGrounded || hitRight || hitLeft) {
+			// 地面・壁に接していたらジャンプ
+			if (isGrounded || R_Hit || L_Hit) {
 				jumping = true;
 				jumpSpeed = 0.5f;
+				
 				time = 0;
+				// ジャンプの種類を識別
 				if (!isGrounded)
-					jumpType = (hitRight == true) ? R_Jump : (hitLeft == true) ? L_Jump : None;
+					jumpType = (R_Hit == true) ? R_Jump : (L_Hit == true) ? L_Jump : None;
+				switch(jumpType){
+				case R_Jump:jumpSpeed = R_Hit.collider.GetComponent<Ground> ().addSpeed;break;
+				case L_Jump:jumpSpeed = L_Hit.collider.GetComponent<Ground> ().addSpeed;break;
+				}
+			} else {
+				jumpType = None;
 			}
 		}
 		if (jumping) {
 			// 壁キック処理
 			switch(jumpType){
-			case R_Jump:velocity.x -= speed * 1.5f;break;
-			case L_Jump:velocity.x += speed * 1.5f;break;
+			case R_Jump:velocity.x -= kickSpeed;break;
+			case L_Jump:velocity.x += kickSpeed;break;
 			}
 			// ジャンプの移動量分加算
-			velocity.y += jumpSpeed;
+			if(!hitceiling)velocity.y += jumpSpeed;
 			// ジャンプ中の時間を加算
 			time += Time.deltaTime;
 			// ジャンプの減速量の計算
@@ -133,14 +146,16 @@ public class Player : MonoBehaviour {
 		// 落下
 		if (!jumping) {
 			time += Time.deltaTime;
-			velocity.y -= (0.98f * (time * time)) / 2;
+			// 落ちる速度の加算
+			velocity.y -= (0.98f * time) / 2;
 		}
 	}
 
 	void CheckGround(){
-		// 地面についているかを算出
+		// ステージの当たり判定
 		isGrounded = Physics2D.Raycast (transform.position, Vector2.down,1.6f, 1 << LayerMask.NameToLayer ("Ground"));
-		hitRight = Physics2D.Raycast (transform.position, Vector2.right, 0.8f, 1 << LayerMask.NameToLayer ("Ground"));
-		hitLeft = Physics2D.Raycast (transform.position, Vector2.left, 1.0f, 1 << LayerMask.NameToLayer ("Ground"));
+		R_Hit = Physics2D.Raycast (transform.position, Vector2.right, 0.8f, 1 << LayerMask.NameToLayer ("Ground"));
+		L_Hit = Physics2D.Raycast (transform.position, Vector2.left, 1.0f, 1 << LayerMask.NameToLayer ("Ground"));
+		hitceiling = Physics2D.Raycast (transform.position, Vector2.up, 1.15f, 1 << LayerMask.NameToLayer ("Ground"));
 	}
 }

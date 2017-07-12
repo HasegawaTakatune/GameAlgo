@@ -5,18 +5,17 @@ using UnityEngine;
 public class Stage : MonoBehaviour {
 
 	[SerializeField]
-	protected float Width;
-	public float GetWidth(){return Width;}
+	protected float WIDTH;
+	public float width{ get { return WIDTH; } set { WIDTH = value; } }
 	[SerializeField]
-	protected float Height;
-	public float GetHeight(){return Height;}
+	protected float HEIGHT;
+	public float height{ get { return HEIGHT; } set { HEIGHT = value; } }
 
-	// Use this for initialization
-	void Start () {
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+	public Vector2 vector2 {
+		get{ return new Vector2 (WIDTH, HEIGHT); }
+		set {
+			WIDTH = value.x;
+			HEIGHT = value.y;
+		}
 	}
 }
