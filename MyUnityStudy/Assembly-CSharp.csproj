@@ -49,11 +49,15 @@
      <Compile Include="Assets\Scripts\Coin.cs" />
      <Compile Include="Assets\Scripts\CreateStageX.cs" />
      <Compile Include="Assets\Scripts\CreateStarge.cs" />
+     <Compile Include="Assets\Scripts\Effect_Green.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\Generator.cs" />
      <Compile Include="Assets\Scripts\Ground.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\PlayerAnimationView.cs" />
+     <Compile Include="Assets\Scripts\PlayerNetwarkSetup.cs" />
+     <Compile Include="Assets\Scripts\PlayerSyncPosition.cs" />
+     <Compile Include="Assets\Scripts\PlayerSyncStatus.cs" />
      <Compile Include="Assets\Scripts\ScoreTextViewer.cs" />
      <Compile Include="Assets\Scripts\Stage.cs" />
      <Compile Include="Assets\Scripts\TimeTextViewer.cs" />

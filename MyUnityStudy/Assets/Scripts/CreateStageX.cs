@@ -3,56 +3,56 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CreateStageX : MonoBehaviour {
-	// 方向
-	const byte Right = 0,Left = 1;
-	byte direc;
 	// 生成のタイプ
-	const byte WALL = 0,GROUND = 1,GROUND_TURN = 2;
+	const byte WALL = 0,GROUND = 1;
 	byte type = WALL;
+	// 方向
+	const byte NORMAL = 0,TURN = 1;
+	byte direc = NORMAL;
 	byte rand = WALL;
-	// 生成するオブジェクト
+	// 生成オブジェクト(壁)
 	[SerializeField]
-	GameObject[] C_Obj;
-	List<Stage> S_Obj = new List<Stage> ();
+	GameObject[] Wall;
+	// 生成オブジェクト(床)
+	[SerializeField]
+	GameObject[] Ground;
+
 	// 生成場所
 	Vector2 pos = new Vector2(0,2);
 
 	// Use this for initialization
 	void Start () {
-		// 
-		for (int i = 0; i < C_Obj.Length; i++)
-			S_Obj.Add (C_Obj [i].GetComponent<Stage> ());
 		// 生成処理
-		for (int i = 0;pos.y <= 100; i++) {
+		for (int i = 0; pos.y <= 100; i++) {
 			// 生成
-			Instantiate (C_Obj [type], pos, Quaternion.identity);
-			// 次に生成する位置に移動
-			pos += S_Obj [type].vector2;
-			// 次に生成するモノを決める
-			if (type == WALL)
-				rand = (byte)Random.Range (0, 4);
-			else {
-				rand = (byte)Random.Range (0, 1);
-				rand = (rand == 0) ? WALL : type;
+			if (type == WALL) {
+				Instantiate (Wall [direc], pos, Quaternion.identity);
+				// 次に生成する位置に移動
+				pos += Wall [direc].GetComponent<Stage> ().vector2;
+			} else {
+				Instantiate (Ground [direc], pos, Quaternion.identity);
+				// 次に生成する位置に移動
+				pos += Ground [direc].GetComponent<Stage> ().vector2;
 			}
+
+			// 次に生成するモノを決める
+			rand = (byte)Random.Range (0, 2);
 			// 生成するステージの更新
-			if (type != rand) {
-				switch (rand) {
-				case WALL:
-					type = WALL;
+			switch (rand) {
+			case WALL:
+				if (type == GROUND)
 					pos.y += 6;
-					break;
-				case GROUND:
-					type = GROUND;
-					pos.x += 1;
-					break;
-				case GROUND_TURN:
-					type = GROUND_TURN;
-					pos.x -= 8;
-					break;
-				default:
-					break;
-				}
+				type = WALL;
+				direc = (direc == NORMAL) ? TURN : NORMAL;
+				break;
+			case GROUND:
+				type = GROUND;
+				direc = (byte)Random.Range (0, 2);
+				if (direc == TURN)
+					pos.x += -8;
+				break;
+			default:
+				break;
 			}
 		}
 	}

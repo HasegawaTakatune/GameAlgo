@@ -9,22 +9,35 @@ public class Player : MonoBehaviour {
 	// 移動速度
 	[SerializeField]
 	float speed = 0.1f;
+
 	// 当たり判定
 	[SerializeField]
 	RaycastHit2D isGrounded;
 	bool hitceiling;
 	RaycastHit2D R_Hit;
 	RaycastHit2D L_Hit;
+
 	// 走り制御
 	bool isRunning;
 	Vector3 groundPos;
+
 	// ジャンプ制御
 	bool jumping = false;
 	byte jumpType = None;
+
 	// ジャンプ速度
-	float jumpSpeed; 			// Normal 5 	:: Power 5.5
-	float kickSpeed = 0.05f; 	// Normal 0.05 :: Power 0.15
+	[SerializeField]
+	float jumpSpeed = 0.65f;		// Normal 5 	:: Power 5.5
+	[SerializeField]
+	float kickSpeed = 0.055f; 	// Normal 0.055 :: Power 0.06
+	float n_jumpSpeed = 0.65f,sp_JumpSpeed = 0.75f;
+	float n_kickSpeed = 0.055f,sp_KickSpeed = 0.06f;
+
+	// 特殊ジャンプエフェクト
+	[SerializeField]
+	GameObject sp_JumpEffect;
 	float time;
+
 	// 着地
 	bool landing = false;
 	//
@@ -88,18 +101,33 @@ public class Player : MonoBehaviour {
 			// 地面・壁に接していたらジャンプ
 			if (isGrounded || R_Hit || L_Hit) {
 				jumping = true;
-				jumpSpeed = 0.5f;
+				//jumpSpeed = 0.65f;
 				
 				time = 0;
 				// ジャンプの種類を識別
 				if (!isGrounded)
 					jumpType = (R_Hit == true) ? R_Jump : (L_Hit == true) ? L_Jump : None;
+				else
+					jumpType = None;
 				switch(jumpType){
-				case R_Jump:jumpSpeed = R_Hit.collider.GetComponent<Ground> ().addSpeed;break;
-				case L_Jump:jumpSpeed = L_Hit.collider.GetComponent<Ground> ().addSpeed;break;
+				case R_Jump:
+					if (R_Hit.collider.GetComponent<Ground> ().IsSpecial) {
+						SetSpecialJumpStatus ();
+					} else {
+						SetNormalJumpStatus ();
+					}
+					break;
+				case L_Jump:
+					if (L_Hit.collider.GetComponent<Ground> ().IsSpecial) {
+						SetSpecialJumpStatus ();
+					} else {
+						SetNormalJumpStatus ();
+					}
+					break;
+				case None:
+					SetNormalJumpStatus ();
+					break;
 				}
-			} else {
-				jumpType = None;
 			}
 		}
 		if (jumping) {
@@ -119,6 +147,17 @@ public class Player : MonoBehaviour {
 				time = 0;
 			}
 		}
+	}
+	// 通常ジャンプのステータス
+	void SetNormalJumpStatus(){	
+		jumpSpeed = n_jumpSpeed;
+		kickSpeed = n_kickSpeed;
+	}
+	// 特殊ジャンプのステータス
+	void SetSpecialJumpStatus(){	
+		jumpSpeed = sp_JumpSpeed;
+		kickSpeed = sp_KickSpeed;
+		Instantiate (sp_JumpEffect, transform.position + Vector3.down, Quaternion.identity);
 	}
 
 	public bool IsRunning(){
