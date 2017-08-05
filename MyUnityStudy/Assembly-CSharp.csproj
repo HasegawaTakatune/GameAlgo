@@ -52,13 +52,17 @@
      <Compile Include="Assets\Scripts\Effect_Green.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\Generator.cs" />
+     <Compile Include="Assets\Scripts\GoalFlag.cs" />
      <Compile Include="Assets\Scripts\Ground.cs" />
+     <Compile Include="Assets\Scripts\ManuManager.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\PlayerAnimationView.cs" />
      <Compile Include="Assets\Scripts\PlayerNetwarkSetup.cs" />
      <Compile Include="Assets\Scripts\PlayerSyncPosition.cs" />
      <Compile Include="Assets\Scripts\PlayerSyncStatus.cs" />
+     <Compile Include="Assets\Scripts\RockClimbManager.cs" />
      <Compile Include="Assets\Scripts\ScoreTextViewer.cs" />
+     <Compile Include="Assets\Scripts\SelectionMenu.cs" />
      <Compile Include="Assets\Scripts\Stage.cs" />
      <Compile Include="Assets\Scripts\TimeTextViewer.cs" />
  <Reference Include="UnityEngine.UI">

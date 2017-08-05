@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
 	const byte None = 0,R_Jump = 1,L_Jump = 2;
@@ -42,7 +43,13 @@ public class Player : MonoBehaviour {
 	bool landing = false;
 	//
 	Ground ground;
-
+	// 自己タイム
+	[SerializeField]
+	TextMesh SelfTime;
+	float myTime = 0;
+	public float MyTime{ get { return myTime; } set { myTime = value; SelfTime.text = myTime.ToString ();} }
+	bool goal = false;
+	public bool Goal{ get { return goal; } set { goal = value; } }
 	// Use this for initialization
 	void Start () {
 	}
@@ -193,8 +200,8 @@ public class Player : MonoBehaviour {
 	void CheckGround(){
 		// ステージの当たり判定
 		isGrounded = Physics2D.Raycast (transform.position, Vector2.down,1.6f, 1 << LayerMask.NameToLayer ("Ground"));
-		R_Hit = Physics2D.Raycast (transform.position, Vector2.right, 0.8f, 1 << LayerMask.NameToLayer ("Ground"));
-		L_Hit = Physics2D.Raycast (transform.position, Vector2.left, 1.0f, 1 << LayerMask.NameToLayer ("Ground"));
+		R_Hit = Physics2D.Raycast (transform.position, Vector2.right, 1.0f, 1 << LayerMask.NameToLayer ("Ground"));
+		L_Hit = Physics2D.Raycast (transform.position, Vector2.left, 1.2f, 1 << LayerMask.NameToLayer ("Ground"));
 		hitceiling = Physics2D.Raycast (transform.position, Vector2.up, 1.15f, 1 << LayerMask.NameToLayer ("Ground"));
 	}
 }
