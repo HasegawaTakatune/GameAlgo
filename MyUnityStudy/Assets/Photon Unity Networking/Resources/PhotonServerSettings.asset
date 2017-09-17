@@ -43,4 +43,6 @@ MonoBehaviour:
   - RequestForPickupTimes
   - TaggedPlayer
   - syncPosition
+  - syncDirection
+  - syncPlayAnimation
   DisableAutoOpenWizard: 1

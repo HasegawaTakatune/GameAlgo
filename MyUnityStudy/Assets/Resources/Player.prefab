@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 114616685660629586}
   - component: {fileID: 114237565838279346}
   - component: {fileID: 114952482223469496}
+  - component: {fileID: 114986782261156110}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -200,7 +201,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1590869100823050}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a90ad65ce94852428c7f5fa311c165a, type: 3}
   m_Name: 
@@ -217,6 +218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 114745185334818616}
+  playerAnimationView: {fileID: 114041834464077804}
   boxcollider2d: {fileID: 61065620371502062}
 --- !u!114 &114616685660629586
 MonoBehaviour:
@@ -272,6 +274,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myPhotonView: {fileID: 0}
+--- !u!114 &114986782261156110
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1590869100823050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb32f4c1844e55842b75e25cf9a6329e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myPhotonView: {fileID: 0}
+  player: {fileID: 0}
+  animator: {fileID: 0}
+  spriteRenderer: {fileID: 0}
 --- !u!212 &212573397368363352
 SpriteRenderer:
   m_ObjectHideFlags: 1

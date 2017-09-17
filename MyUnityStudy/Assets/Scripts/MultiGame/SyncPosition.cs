@@ -3,15 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SyncPosition : Photon.MonoBehaviour {
-	[SerializeField]PhotonView myPhotonView;
+	/// 座標同期直後の座標を保存
+	Vector3 lastPos;
 
 	void Awake () {
-		myPhotonView = GetComponent<PhotonView> ();
+		// 生成時の座標に初期化
+		lastPos = transform.position;
 	}
 	
 	void Update () {
 		if (photonView.isMine) {
-			myPhotonView.RPC ("syncPosition", PhotonTargets.Others, transform.position);
+			Vector3 nowPos = transform.position;
+			if (Vector3.Distance (nowPos, lastPos) > 0.5f) {
+				photonView.RPC ("syncPosition", PhotonTargets.Others, nowPos);
+				lastPos = nowPos;
+			}
 		}
 	}
 
