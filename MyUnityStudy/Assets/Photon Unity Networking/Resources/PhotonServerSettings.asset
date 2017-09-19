@@ -45,4 +45,5 @@ MonoBehaviour:
   - syncPosition
   - syncDirection
   - syncPlayAnimation
+  - syncGameStatus
   DisableAutoOpenWizard: 1

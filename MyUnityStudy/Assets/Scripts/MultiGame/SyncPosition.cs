@@ -18,12 +18,14 @@ public class SyncPosition : Photon.MonoBehaviour {
 				photonView.RPC ("syncPosition", PhotonTargets.Others, nowPos);
 				lastPos = nowPos;
 			}
+		} else {
+			transform.position = Vector3.Lerp (transform.position, lastPos, 0.1f);
 		}
 	}
 
 	[PunRPC]
 	void syncPosition(Vector3 pos){
-		transform.position = Vector3.Lerp (transform.position, pos, 0.5f);
+		lastPos = pos;
 	}
 
 }

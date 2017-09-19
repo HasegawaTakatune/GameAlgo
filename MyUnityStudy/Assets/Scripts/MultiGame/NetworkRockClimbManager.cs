@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class RockClimbManager : MonoBehaviour {
+public class NetworkRockClimbManager : Photon.MonoBehaviour {
 	Text TimeCount;
 	Text CountDown;
 	Text TimeScore;
@@ -16,6 +16,7 @@ public class RockClimbManager : MonoBehaviour {
 	public float Timer{get{ return timer;}}
 
 	int GoalCount = 0;
+	int playerCount = 0;
 
 	void Start () {
 		TimeCount = GameObject.Find ("TimeCount").GetComponent<Text> ();
@@ -32,6 +33,7 @@ public class RockClimbManager : MonoBehaviour {
 		case STATUS.Wait:
 			if (Input.GetKeyDown (KeyCode.Return)) {
 				status = STATUS.CountDown;
+				photonView.RPC ("syncGameStatus", PhotonTargets.All, STATUS.CountDown);
 			}
 			break;
 
@@ -47,7 +49,7 @@ public class RockClimbManager : MonoBehaviour {
 			break;
 
 		case STATUS.End:
-			CountDown.text = "\"SPACE\"";
+			CountDown.text = "\"ENTER\"";
 			if (Input.GetKeyDown (KeyCode.Return))
 				SceneManager.LoadScene ("Menu");
 			break;
@@ -55,6 +57,7 @@ public class RockClimbManager : MonoBehaviour {
 	}
 
 	IEnumerator StartMessage(){
+		playerCount = GameObject.FindGameObjectsWithTag ("Player").Length;
 		timer = 0;
 		status = STATUS.Play;
 		CountDown.text = "Start";
@@ -70,5 +73,10 @@ public class RockClimbManager : MonoBehaviour {
 			player.Goal = true;
 			status = STATUS.End;
 		}
+	}
+
+	[PunRPC]
+	void syncGameStatus(STATUS sts){
+		status = sts;
 	}
 }

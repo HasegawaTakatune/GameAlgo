@@ -31,16 +31,12 @@ public class SyncAnimation : Photon.MonoBehaviour {
 		// クライアントが制御している時
 		if (photonView.isMine) {
 			
-			int nowAnim = (!player.IsGrounded ()) ? JUMP : (player.IsRunning ()) ? RUN : IDLE;
-			if (lastAnim != nowAnim) {
-				lastAnim = nowAnim;
-				photonView.RPC ("syncPlayAnimation", PhotonTargets.Others, lastAnim);
-			}
+			photonView.RPC ("syncPlayAnimation", PhotonTargets.Others, (!player.IsGrounded ()) ? JUMP : (player.IsRunning ()) ? RUN : IDLE);
 
 			float nowDirec = player.GetDirection ().x;
 			if (nowDirec != 0 && lastDirec != nowDirec) {
+				photonView.RPC ("syncDirection", PhotonTargets.Others, nowDirec);
 				lastDirec = nowDirec;
-				photonView.RPC ("syncDirection", PhotonTargets.Others, lastDirec);
 			}
 		}
 	}

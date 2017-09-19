@@ -199,7 +199,9 @@
      <Compile Include="Assets\Scripts\Game\Stage.cs" />
      <Compile Include="Assets\Scripts\Manu\CameraScroll.cs" />
      <Compile Include="Assets\Scripts\Manu\SelectionMenu.cs" />
+     <Compile Include="Assets\Scripts\MultiGame\NetworkCreateStageX.cs" />
      <Compile Include="Assets\Scripts\MultiGame\NetworkManager.cs" />
+     <Compile Include="Assets\Scripts\MultiGame\NetworkRockClimbManager.cs" />
      <Compile Include="Assets\Scripts\MultiGame\NetworkSetting.cs" />
      <Compile Include="Assets\Scripts\MultiGame\SyncAnimation.cs" />
      <Compile Include="Assets\Scripts\MultiGame\SyncPosition.cs" />

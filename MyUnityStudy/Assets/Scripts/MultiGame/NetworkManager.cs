@@ -69,7 +69,7 @@ public class NetworkManager : Photon.MonoBehaviour {
 	void OnJoinedRoom(){
 		int No = PhotonNetwork.countOfPlayersInRooms;
 
-		GameObject player = PhotonNetwork.Instantiate (ResourcePath, Vector3.up, Quaternion.identity, 0);
+		PhotonNetwork.Instantiate (ResourcePath, Vector3.up, Quaternion.identity, 0);
 		EnteringTheRoom = true;
 	}
 
