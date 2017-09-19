@@ -32,7 +32,7 @@ public class NetworkRockClimbManager : Photon.MonoBehaviour {
 		switch (status) {
 		case STATUS.Wait:
 			if (Input.GetKeyDown (KeyCode.Return)) {
-				status = STATUS.CountDown;
+				//status = STATUS.CountDown;
 				photonView.RPC ("syncGameStatus", PhotonTargets.All, STATUS.CountDown);
 			}
 			break;

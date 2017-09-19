@@ -47,7 +47,7 @@ public class RockClimbManager : MonoBehaviour {
 			break;
 
 		case STATUS.End:
-			CountDown.text = "\"SPACE\"";
+			CountDown.text = "\"ENTER\"";
 			if (Input.GetKeyDown (KeyCode.Return))
 				SceneManager.LoadScene ("Menu");
 			break;
