@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class RockClimbManager : MonoBehaviour {
+public class RockClimbManager : MonoBehaviour,Game_RecieveInterface {
 	Text TimeCount;
 	Text CountDown;
 	Text TimeScore;
@@ -58,12 +58,14 @@ public class RockClimbManager : MonoBehaviour {
 		timer = 0;
 		status = STATUS.Play;
 		CountDown.text = "Start";
-		SendMessage ("GameStart");
+		SendMessage ("CreateStage");
 		yield return new WaitForSeconds (.5f);
 		CountDown.text = "";
 	}
 
-	public void Goal(Player player){
+
+
+	public void PlayerGoal(Player player){
 		if (!player.Goal) {
 			GoalCount++;
 			TimeScore.text += GoalCount + "位 : " + player.Name + "Time : " + (Mathf.Floor (timer * 100) / 100) + "秒\n";

@@ -191,11 +191,14 @@
      <Compile Include="Assets\PhotonChatApi\ChatUserStatus.cs" />
      <Compile Include="Assets\PhotonChatApi\IChatClientListener.cs" />
      <Compile Include="Assets\Scripts\Game\CreateStageX.cs" />
+     <Compile Include="Assets\Scripts\Game\Game_RecieveInterface.cs" />
      <Compile Include="Assets\Scripts\Game\GoalFlag.cs" />
      <Compile Include="Assets\Scripts\Game\Ground.cs" />
      <Compile Include="Assets\Scripts\Game\Player.cs" />
      <Compile Include="Assets\Scripts\Game\PlayerAnimationView.cs" />
+     <Compile Include="Assets\Scripts\Game\Player_RecieveInterface.cs" />
      <Compile Include="Assets\Scripts\Game\RockClimbManager.cs" />
+     <Compile Include="Assets\Scripts\Game\RockClimbManagerInterface.cs" />
      <Compile Include="Assets\Scripts\Game\Stage.cs" />
      <Compile Include="Assets\Scripts\Manu\CameraScroll.cs" />
      <Compile Include="Assets\Scripts\Manu\SelectionMenu.cs" />

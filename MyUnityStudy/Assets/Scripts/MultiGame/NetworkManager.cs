@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NetworkManager : Photon.MonoBehaviour {
 	// 生成するアイテムのパス
 	[SerializeField]string ResourcePath = "";
+	// 接続状況を知らせるテキスト
+	[SerializeField]Text NoticeText;
 	// 部屋名
 	const string ROOM_NAME = "MultiRoom";
 	// 入室中判定
@@ -12,6 +15,7 @@ public class NetworkManager : Photon.MonoBehaviour {
 
 	void Start () {
 		ConnectPhoton ();	// 初期接続
+		NoticeText.text = "Connecting...";
 	}
 
 	/// Photonに接続する最初のおまじない
@@ -28,6 +32,8 @@ public class NetworkManager : Photon.MonoBehaviour {
 
 	/// ルーム作成
 	public void CreateRoom(){
+		NoticeText.text = "Creating room...";
+
 		string userName = "UnityChan";
 		string userId = "UnityChan";
 
@@ -71,6 +77,8 @@ public class NetworkManager : Photon.MonoBehaviour {
 
 		PhotonNetwork.Instantiate (ResourcePath, Vector3.up, Quaternion.identity, 0);
 		EnteringTheRoom = true;
+
+		NoticeText.text = "\"ENTER\"";
 	}
 
 }

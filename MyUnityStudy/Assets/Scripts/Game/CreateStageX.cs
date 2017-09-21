@@ -14,11 +14,7 @@ public class CreateStageX : MonoBehaviour {
 	[SerializeField]	GameObject Goal;		// 生成オブジェクト(ゴール)
 	Vector2 pos = new Vector2(0,2);				// 生成場所
 
-	void GameStart(){
-		CreateStage ();
-	}
-
-	void CreateStage(){
+	public void CreateStage(){
 		// 生成処理
 		while(true){
 			switch(type){
@@ -50,8 +46,10 @@ public class CreateStageX : MonoBehaviour {
 			case GROUND:
 				if (rand != type)
 					direc = (byte)Random.Range (0, 2);
+				
 				if (direc == TURN)
 					pos.x += -6;
+
 				type = GROUND;
 				break;
 			default:

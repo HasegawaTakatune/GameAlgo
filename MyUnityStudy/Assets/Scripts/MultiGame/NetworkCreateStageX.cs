@@ -17,10 +17,6 @@ public class NetworkCreateStageX : Photon.MonoBehaviour {
 	[SerializeField]	string GoalPath;		// 生成オブジェクト(ゴール)
 	Vector2 pos = new Vector2(0,2);				// 生成場所
 
-	void GameStart(){
-		CreateStage ();
-	}
-
 	void CreateStage(){
 		// 生成処理
 		while (true) {

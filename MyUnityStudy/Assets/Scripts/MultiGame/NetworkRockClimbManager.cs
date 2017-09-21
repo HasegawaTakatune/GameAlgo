@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class NetworkRockClimbManager : Photon.MonoBehaviour {
+public class NetworkRockClimbManager : Photon.MonoBehaviour,Game_RecieveInterface {
 	Text TimeCount;
 	Text CountDown;
 	Text TimeScore;
@@ -61,18 +61,25 @@ public class NetworkRockClimbManager : Photon.MonoBehaviour {
 		timer = 0;
 		status = STATUS.Play;
 		CountDown.text = "Start";
-		SendMessage ("GameStart");
+		if (photonView.isMine)
+			SendMessage ("CreateStage");
 		yield return new WaitForSeconds (.5f);
 		CountDown.text = "";
 	}
 
-	public void Goal(Player player){
+	public void PlayerGoal(Player player){
 		if (!player.Goal) {
-			GoalCount++;
-			TimeScore.text += GoalCount + "位 : " + player.Name + "Time : " + (Mathf.Floor (timer * 100) / 100) + "秒\n";
+			photonView.RPC ("syncPlayerGoal", PhotonTargets.AllBuffered, player.Name);
 			player.Goal = true;
-			status = STATUS.End;
 		}
+	}
+
+	[PunRPC]
+	void syncPlayerGoal(string name){
+		GoalCount++;
+		TimeScore.text += GoalCount + "位 : " + name + "Time : " + (Mathf.Floor (timer * 100) / 100) + "秒\n";
+		if (GoalCount >= playerCount)
+			status = STATUS.End;
 	}
 
 	[PunRPC]
