@@ -1,16 +1,17 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\MultiGame\NetworkRockClimbManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Manu\MenuManager.cs">
     <Files>
       <File FileName="Assets\Scripts\Game\CreateStageX.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Game\RockClimbManager.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Game\Player.cs" Line="1" Column="1" />
-      <File FileName="Assets\Photon Unity Networking\Plugins\PhotonNetwork\LoadbalancingPeer.cs" Line="776" Column="1" />
-      <File FileName="Assets\Scripts\Game\Game_RecieveInterface.cs" Line="4" Column="2" NotebookId="1" />
-      <File FileName="Assets\Scripts\Game\GoalFlag.cs" Line="13" Column="42" NotebookId="1" />
+      <File FileName="Assets\Photon Unity Networking\Plugins\PhotonNetwork\LoadbalancingPeer.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Manu\MenuManager.cs" Line="20" Column="2" />
+      <File FileName="Assets\Scripts\Game\Game_RecieveInterface.cs" Line="1" Column="1" NotebookId="1" />
+      <File FileName="Assets\Scripts\Game\GoalFlag.cs" Line="1" Column="1" NotebookId="1" />
       <File FileName="Assets\Scripts\MultiGame\NetworkRockClimbManager.cs" Line="71" Column="22" NotebookId="1" />
-      <File FileName="Assets\Scripts\Game\RockClimbManagerInterface.cs" Line="8" Column="50" NotebookId="1" />
-      <File FileName="Assets\Scripts\MultiGame\NetworkManager.cs" Line="69" Column="25" NotebookId="1" />
+      <File FileName="Assets\Scripts\Game\RockClimbManagerInterface.cs" Line="1" Column="1" NotebookId="1" />
+      <File FileName="Assets\Scripts\MultiGame\NetworkManager.cs" Line="1" Column="1" NotebookId="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

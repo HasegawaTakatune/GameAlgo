@@ -201,6 +201,7 @@
      <Compile Include="Assets\Scripts\Game\RockClimbManagerInterface.cs" />
      <Compile Include="Assets\Scripts\Game\Stage.cs" />
      <Compile Include="Assets\Scripts\Manu\CameraScroll.cs" />
+     <Compile Include="Assets\Scripts\Manu\MenuManager.cs" />
      <Compile Include="Assets\Scripts\Manu\SelectionMenu.cs" />
      <Compile Include="Assets\Scripts\MultiGame\NetworkCreateStageX.cs" />
      <Compile Include="Assets\Scripts\MultiGame\NetworkManager.cs" />
