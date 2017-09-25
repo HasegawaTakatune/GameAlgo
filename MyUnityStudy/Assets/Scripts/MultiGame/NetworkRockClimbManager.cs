@@ -17,6 +17,7 @@ public class NetworkRockClimbManager : Photon.MonoBehaviour,Game_RecieveInterfac
 
 	int GoalCount = 0;
 	int playerCount = 0;
+	bool playerCreated = false;
 
 	void Start () {
 		TimeCount = GameObject.Find ("TimeCount").GetComponent<Text> ();
@@ -31,7 +32,7 @@ public class NetworkRockClimbManager : Photon.MonoBehaviour,Game_RecieveInterfac
 		
 		switch (status) {
 		case STATUS.Wait:
-			if (Input.GetKeyDown (KeyCode.Return)) {
+			if (Input.GetKeyDown (KeyCode.Return) && playerCreated) {
 				//status = STATUS.CountDown;
 				photonView.RPC ("syncGameStatus", PhotonTargets.All, STATUS.CountDown);
 			}
@@ -67,6 +68,10 @@ public class NetworkRockClimbManager : Photon.MonoBehaviour,Game_RecieveInterfac
 		CountDown.text = "";
 	}
 
+	void PlayerCreatedMessage(){
+		playerCreated = true;
+	}
+
 	public void PlayerGoal(Player player){
 		if (!player.Goal) {
 			photonView.RPC ("syncPlayerGoal", PhotonTargets.AllBuffered, player.Name);
@@ -77,7 +82,7 @@ public class NetworkRockClimbManager : Photon.MonoBehaviour,Game_RecieveInterfac
 	[PunRPC]
 	void syncPlayerGoal(string name){
 		GoalCount++;
-		TimeScore.text += GoalCount + "位 : " + name + "Time : " + (Mathf.Floor (timer * 100) / 100) + "秒\n";
+		TimeScore.text += GoalCount + "位 : " + name + " Time : " + (Mathf.Floor (timer * 100) / 100) + "秒\n";
 		if (GoalCount >= playerCount)
 			status = STATUS.End;
 	}

@@ -4,17 +4,21 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
+	[SerializeField]Text nameLabel;
 	string _name = "UnityChan";
-	public string Name{get{ return _name;}set{ _name = value;}}
+	public string Name {
+		get{ return _name; }
+		set {_name = value;	nameLabel.text = _name;	}
+	}
 	const byte None = 0,R_Jump = 1,L_Jump = 2,Ground = 3;
 	// 移動ベクトル
 	Vector3 velocity;
 
 	// 移動速度
-	[SerializeField]	float speed = 0.1f;
+	[SerializeField]float speed = 0.1f;
 
 	// 当たり判定
-	[SerializeField]	RaycastHit2D isGrounded;
+	[SerializeField]RaycastHit2D isGrounded;
 	bool hitceiling;
 	RaycastHit2D R_Hit;
 	RaycastHit2D L_Hit;
@@ -28,13 +32,13 @@ public class Player : MonoBehaviour {
 	byte jumpType = None;
 
 	// ジャンプ速度
-	[SerializeField]	float jumpSpeed = 0.65f;	// Normal 5 	:: Power 5.5
-	[SerializeField]	float kickSpeed = 0.055f; 	// Normal 0.055 :: Power 0.06
+	[SerializeField]float jumpSpeed = 0.65f;	// Normal 5 	:: Power 5.5
+	[SerializeField]float kickSpeed = 0.055f; 	// Normal 0.055 :: Power 0.06
 	float n_jumpSpeed = 0.65f,sp_JumpSpeed = 0.75f;
 	float n_kickSpeed = 0.055f,sp_KickSpeed = 0.06f;
 
 	// 特殊ジャンプエフェクト
-	[SerializeField]	GameObject sp_JumpEffect;
+	[SerializeField]GameObject sp_JumpEffect;
 	float time;
 
 	// 着地
@@ -43,6 +47,9 @@ public class Player : MonoBehaviour {
 	Ground ground;
 	bool goal = false;
 	public bool Goal{ get { return goal; } set { goal = value; } }
+
+	void Start(){
+	}
 
 	void Update () {
 		// 移動

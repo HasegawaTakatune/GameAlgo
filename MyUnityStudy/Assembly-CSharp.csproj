@@ -129,7 +129,6 @@
      <Compile Include="Assets\Scripts\Manu\CameraScroll.cs" />
      <Compile Include="Assets\Scripts\Manu\MenuManager.cs" />
      <Compile Include="Assets\Scripts\Manu\SelectionMenu.cs" />
-     <Compile Include="Assets\Scripts\MultiGame\InputField.cs" />
      <Compile Include="Assets\Scripts\MultiGame\NetworkCreateStageX.cs" />
      <Compile Include="Assets\Scripts\MultiGame\NetworkManager.cs" />
      <Compile Include="Assets\Scripts\MultiGame\NetworkRockClimbManager.cs" />
@@ -142,9 +141,6 @@
      <Compile Include="Assets\Scripts\RunningForever\Generator.cs" />
      <Compile Include="Assets\Scripts\RunningForever\ScoreTextViewer.cs" />
      <Compile Include="Assets\Scripts\RunningForever\TimeTextViewer.cs" />
-     <Compile Include="Assets\Scripts\UNET\PlayerNetwarkSetup.cs" />
-     <Compile Include="Assets\Scripts\UNET\PlayerSyncPosition.cs" />
-     <Compile Include="Assets\Scripts\UNET\PlayerSyncStatus.cs" />
      <None Include="Assets\Photon Unity Networking\link.xml" />
      <None Include="Assets\Plugins\Photon3Unity3D.xml" />
      <None Include="Assets\Plugins\release_history.txt" />

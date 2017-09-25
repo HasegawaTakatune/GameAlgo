@@ -5,9 +5,9 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class RockClimbManager : MonoBehaviour,Game_RecieveInterface {
-	Text TimeCount;
-	Text CountDown;
-	Text TimeScore;
+	[SerializeField]Text TimeCount;
+	[SerializeField]Text CountDown;
+	[SerializeField]Text TimeScore;
 
 	public enum STATUS{Wait,CountDown,Play,End}
 	STATUS status = STATUS.Wait;

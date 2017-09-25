@@ -9,12 +9,12 @@ public class NetworkCreateStageX : Photon.MonoBehaviour {
 	const byte NORMAL = 0,TURN = 1;				// 方向
 	byte direc = NORMAL;
 	byte rand = WALL;
-	[SerializeField]	GameObject[] Wall;		// 生成オブジェクト(壁)
-	[SerializeField]	GameObject[] Ground;	// 生成オブジェクト(床)
-	[SerializeField]	GameObject Goal;		// 生成オブジェクト(ゴール)
-	[SerializeField]	string[] WallPath;		// 生成オブジェクト(壁)
-	[SerializeField]	string[] GroundPath;	// 生成オブジェクト(床)
-	[SerializeField]	string GoalPath;		// 生成オブジェクト(ゴール)
+	[SerializeField]GameObject[] Wall;		// 生成オブジェクト(壁)
+	[SerializeField]GameObject[] Ground;	// 生成オブジェクト(床)
+	[SerializeField]GameObject Goal;		// 生成オブジェクト(ゴール)
+	[SerializeField]string[] WallPath;		// 生成オブジェクト(壁)
+	[SerializeField]string[] GroundPath;	// 生成オブジェクト(床)
+	[SerializeField]string GoalPath;		// 生成オブジェクト(ゴール)
 	Vector2 pos = new Vector2(0,2);				// 生成場所
 
 	void CreateStage(){

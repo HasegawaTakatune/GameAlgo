@@ -3,9 +3,9 @@ using System.Collections;
 
 public class PlayerAnimationView : MonoBehaviour {
 
-	Player player;
-	Animator animator;
-	SpriteRenderer spriteRenderer;
+	[SerializeField]Player player;
+	[SerializeField]Animator animator;
+	[SerializeField]SpriteRenderer spriteRenderer;
 
 	void Start () {
 		player = GetComponent<Player>();

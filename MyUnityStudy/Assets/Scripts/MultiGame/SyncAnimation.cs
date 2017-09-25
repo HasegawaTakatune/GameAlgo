@@ -21,7 +21,7 @@ public class SyncAnimation : Photon.MonoBehaviour {
 	/// 前フレームの最終向き
 	float lastDirec;
 
-	void Awake () {
+	void Start () {
 		player = GetComponent<Player> ();
 		animator = GetComponent<Animator> ();
 		spriteRenderer = GetComponent<SpriteRenderer> ();

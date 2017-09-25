@@ -8,15 +8,23 @@ public class NetworkManager : Photon.MonoBehaviour {
 	[SerializeField]string ResourcePath = "";
 	// 接続状況を知らせるテキスト
 	[SerializeField]Text NoticeText;
+	// 入力した名前の格納場所
+	[SerializeField]Text inputField;
+	[SerializeField]GameObject inputFieldObj;
 	// 部屋名
 	const string ROOM_NAME = "MultiRoom";
 	// 入室中判定
 	public static bool EnteringTheRoom = false;
+	//
+	Player player;
 
+	/// 初期の呼び出し関数
 	void Start () {
 		ConnectPhoton ();	// 初期接続
 		NoticeText.text = "Connecting...";
 	}
+
+
 
 	/// Photonに接続する最初のおまじない
 	public void ConnectPhoton(){
@@ -73,12 +81,25 @@ public class NetworkManager : Photon.MonoBehaviour {
 
 	/// ルーム入室が成功した際に呼ばれるコールバックメソッド
 	void OnJoinedRoom(){
-		int No = PhotonNetwork.countOfPlayersInRooms;
-
-		PhotonNetwork.Instantiate (ResourcePath, Vector3.up, Quaternion.identity, 0);
+		inputFieldObj.SetActive (true);
+		//player = PhotonNetwork.Instantiate (ResourcePath, Vector3.up, Quaternion.identity, 0).GetComponent<Player>();
 		EnteringTheRoom = true;
+		NoticeText.text = "What's your name?";
+	}
 
+	/// 入力した名前を受け取り、プレイヤー生成をする
+	public void OnEndInputFieldEdit(string editText){
+		int No = PhotonNetwork.countOfPlayersInRooms;
+		player = PhotonNetwork.Instantiate (ResourcePath, Vector3.up, Quaternion.identity, 0).GetComponent<Player>();
+		player.Name = inputField.text;
+		inputFieldObj.SetActive (false);
 		NoticeText.text = "\"ENTER\"";
+		SendMessage ("PlayerCreatedMessage");
+	}
+
+	/// Photonサーバーへの接続が失敗した際のコールバック
+	void OnFaliedToConnectToPhoton(){
+		NoticeText.text = "Connection failure\nConnection to the Photon server is not established.";
 	}
 
 }
