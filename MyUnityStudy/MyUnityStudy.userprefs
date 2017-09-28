@@ -1,8 +1,10 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\MultiGame\NetworkRockClimbManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Game\RockClimbManager.cs">
     <Files>
-      <File FileName="Assets\Scripts\MultiGame\NetworkRockClimbManager.cs" Line="85" Column="51" />
+      <File FileName="Assets\Scripts\MultiGame\NetworkRockClimbManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\MultiGame\NetworkManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Game\RockClimbManager.cs" Line="69" Column="23" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

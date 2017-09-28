@@ -8,6 +8,9 @@ public class RockClimbManager : MonoBehaviour,Game_RecieveInterface {
 	[SerializeField]Text TimeCount;
 	[SerializeField]Text CountDown;
 	[SerializeField]Text TimeScore;
+	[SerializeField]AudioSource audioSource;
+	[SerializeField]AudioClip BattleBGM;
+	[SerializeField]AudioClip BreakTimeBGM;
 
 	public enum STATUS{Wait,CountDown,Play,End}
 	STATUS status = STATUS.Wait;
@@ -21,6 +24,8 @@ public class RockClimbManager : MonoBehaviour,Game_RecieveInterface {
 		TimeCount = GameObject.Find ("TimeCount").GetComponent<Text> ();
 		CountDown = GameObject.Find ("CountDown").GetComponent<Text> ();
 		TimeScore = GameObject.Find ("TimeScore").GetComponent<Text> ();
+		audioSource = GetComponent<AudioSource> ();
+		audioSource.PlayOneShot (BreakTimeBGM);
 	}
 	
 
@@ -61,6 +66,8 @@ public class RockClimbManager : MonoBehaviour,Game_RecieveInterface {
 		SendMessage ("CreateStage");
 		yield return new WaitForSeconds (.5f);
 		CountDown.text = "";
+		audioSource.Stop ();
+		audioSource.PlayOneShot (BattleBGM);
 	}
 
 

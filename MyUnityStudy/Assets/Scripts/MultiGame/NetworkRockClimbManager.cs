@@ -51,8 +51,10 @@ public class NetworkRockClimbManager : Photon.MonoBehaviour,Game_RecieveInterfac
 
 		case STATUS.End:
 			CountDown.text = "\"ENTER\"";
-			if (Input.GetKeyDown (KeyCode.Return))
+			if (Input.GetKeyDown (KeyCode.Return)) {
+				SendMessage ("ToExit");
 				SceneManager.LoadScene ("Menu");
+			}
 			break;
 		}
 	}

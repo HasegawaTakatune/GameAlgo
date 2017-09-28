@@ -122,7 +122,6 @@
      <Compile Include="Assets\Scripts\Game\Ground.cs" />
      <Compile Include="Assets\Scripts\Game\Player.cs" />
      <Compile Include="Assets\Scripts\Game\PlayerAnimationView.cs" />
-     <Compile Include="Assets\Scripts\Game\Player_RecieveInterface.cs" />
      <Compile Include="Assets\Scripts\Game\RockClimbManager.cs" />
      <Compile Include="Assets\Scripts\Game\RockClimbManagerInterface.cs" />
      <Compile Include="Assets\Scripts\Game\Stage.cs" />
@@ -143,6 +142,7 @@
      <Compile Include="Assets\Scripts\RunningForever\TimeTextViewer.cs" />
      <None Include="Assets\Photon Unity Networking\link.xml" />
      <None Include="Assets\Plugins\Photon3Unity3D.xml" />
+     <None Include="Assets\Text.txt" />
      <None Include="Assets\Plugins\release_history.txt" />
      <None Include="Assets\Photon Unity Networking\readme.txt" />
      <None Include="Assets\Photon Unity Networking\changelog.txt" />

@@ -48,7 +48,13 @@ public class Player : MonoBehaviour {
 	bool goal = false;
 	public bool Goal{ get { return goal; } set { goal = value; } }
 
+	// SE関係
+	[SerializeField]AudioSource audioSource;
+	[SerializeField]AudioClip JumpAudio;
+	[SerializeField]AudioClip SPJumpAudio;
+
 	void Start(){
+		audioSource = GetComponent<AudioSource> ();
 	}
 
 	void Update () {
@@ -94,11 +100,11 @@ public class Player : MonoBehaviour {
 			velocity = velocity * 4;
 		}
 		// 急降下
-		if (Input.GetKey (KeyCode.DownArrow)) {
-			if (transform.position.y - 2.6f >= groundPos.y) {
-				velocity.y -= speed * 4;
-			}
-		}
+		//if (Input.GetKey (KeyCode.DownArrow)) {
+		//	if (transform.position.y - 2.6f >= groundPos.y) {
+		//		velocity.y -= speed * 4;
+		//	}
+		//}
 	}
 
 	void Jump(){
@@ -162,11 +168,13 @@ public class Player : MonoBehaviour {
 	void SetNormalJumpStatus(){	
 		jumpSpeed = n_jumpSpeed;
 		kickSpeed = n_kickSpeed;
+		audioSource.PlayOneShot (JumpAudio);
 	}
 	// 特殊ジャンプのステータス
 	void SetSpecialJumpStatus(){	
 		jumpSpeed = sp_JumpSpeed;
 		kickSpeed = sp_KickSpeed;
+		audioSource.PlayOneShot (SPJumpAudio);
 		Destroy (Instantiate (sp_JumpEffect, transform.position + Vector3.down, Quaternion.identity), 0.8f);
 	}
 

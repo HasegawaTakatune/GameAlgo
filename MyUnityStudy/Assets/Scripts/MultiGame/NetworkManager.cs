@@ -82,6 +82,7 @@ public class NetworkManager : Photon.MonoBehaviour {
 	/// ルーム入室が成功した際に呼ばれるコールバックメソッド
 	void OnJoinedRoom(){
 		inputFieldObj.SetActive (true);
+		inputFieldObj.GetComponent<InputField> ().ActivateInputField ();
 		//player = PhotonNetwork.Instantiate (ResourcePath, Vector3.up, Quaternion.identity, 0).GetComponent<Player>();
 		EnteringTheRoom = true;
 		NoticeText.text = "What's your name?";
@@ -93,6 +94,7 @@ public class NetworkManager : Photon.MonoBehaviour {
 		player = PhotonNetwork.Instantiate (ResourcePath, Vector3.up, Quaternion.identity, 0).GetComponent<Player>();
 		player.Name = inputField.text;
 		inputFieldObj.SetActive (false);
+
 		NoticeText.text = "\"ENTER\"";
 		SendMessage ("PlayerCreatedMessage");
 	}
@@ -100,6 +102,22 @@ public class NetworkManager : Photon.MonoBehaviour {
 	/// Photonサーバーへの接続が失敗した際のコールバック
 	void OnFaliedToConnectToPhoton(){
 		NoticeText.text = "Connection failure\nConnection to the Photon server is not established.";
+	}
+
+	/// 
+	void ToExit(){
+		PhotonNetwork.Disconnect ();
+		PhotonNetwork.LeaveRoom ();
+	}
+
+	/// ロビーを退出した際のコールバック
+	void OnLeftLobby(){
+		Debug.Log ("Call OnLeftLobby");
+	}
+
+	/// Photonサーバーから切断した際のコールバック
+	void OnDisconnectedFromPhoton(){
+		Debug.Log ("Call OnDisconnectedFromPhoton");
 	}
 
 }
