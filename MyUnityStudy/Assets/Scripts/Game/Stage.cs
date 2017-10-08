@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// <para>クラス名　:　Stage</para>
+/// <para>機能　　　:　生成するオブジェクトの高さ・幅を設定する</para>
+/// </summary>
 public class Stage : MonoBehaviour {
 
 	[SerializeField]protected float WIDTH;
@@ -17,3 +21,4 @@ public class Stage : MonoBehaviour {
 		}
 	}
 }
+/// End of class

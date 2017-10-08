@@ -1,10 +1,15 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Game\RockClimbManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Game\StageCreator.cs">
     <Files>
-      <File FileName="Assets\Scripts\MultiGame\NetworkRockClimbManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Game\Player.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Game\PlayerAnimationView.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Game\RockClimbManager.cs" Line="148" Column="17" />
+      <File FileName="Assets\Scripts\Game\RockClimbManagerInterface.cs" Line="27" Column="17" />
+      <File FileName="Assets\Scripts\Game\Stage.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\MultiGame\NetworkManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Game\RockClimbManager.cs" Line="69" Column="23" />
+      <File FileName="Assets\Scripts\Game\StageCreator.cs" Line="15" Column="28" />
+      <File FileName="Assets\Scripts\Game\CreateStageX.cs" Line="38" Column="15" NotebookId="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

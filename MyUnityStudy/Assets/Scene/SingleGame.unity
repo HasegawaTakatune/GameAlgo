@@ -42,7 +42,7 @@ RenderSettings:
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 9
+  serializedVersion: 11
   m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
@@ -54,7 +54,7 @@ LightmapSettings:
     m_EnableBakedLightmaps: 0
     m_EnableRealtimeLightmaps: 0
   m_LightmapEditorSettings:
-    serializedVersion: 8
+    serializedVersion: 9
     m_Resolution: 2
     m_BakeResolution: 40
     m_TextureWidth: 1024
@@ -71,7 +71,7 @@ LightmapSettings:
     m_FinalGatherFiltering: 1
     m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
-    m_MixedBakeMode: 3
+    m_MixedBakeMode: 2
     m_BakeBackend: 0
     m_PVRSampling: 1
     m_PVRDirectSampleCount: 32
@@ -87,7 +87,7 @@ LightmapSettings:
     m_PVRFilteringAtrousNormalSigma: 1
     m_PVRFilteringAtrousPositionSigma: 1
   m_LightingDataAsset: {fileID: 0}
-  m_ShadowMaskMode: 2
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -535,6 +535,8 @@ SpriteRenderer:
   m_Size: {x: 3.2, y: 2.4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!4 &2036040971
 Transform:
   m_ObjectHideFlags: 0
@@ -575,15 +577,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2095902684}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7640b9f3298d7448842d379bece5138, type: 3}
+  m_Script: {fileID: 11500000, guid: 09f0cb1ebab8a10419df083ab373eb99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Wall:
-  - {fileID: 1997387155663250, guid: 4d38e1af08d0eab4f99364e87cd7a0b6, type: 2}
-  - {fileID: 1997387155663250, guid: 64a62a51498d79c4996914bfda0c63b7, type: 2}
-  Ground:
-  - {fileID: 1871180859188536, guid: cdfa6c0df5b6c4342a19b06dbed78ae4, type: 2}
-  - {fileID: 1512080606425804, guid: 991bf7bd15baf7d43991c348c0de0316, type: 2}
+  Block: {fileID: 1000011250369868, guid: 7fb03b2f56b73dc488b0d3a5b724171d, type: 2}
+  BlockX: {fileID: 1630474338421348, guid: 4715b28580059954aa59f7349e9268df, type: 2}
   Goal: {fileID: 1353941382194024, guid: 21415498432a8ee47add2b990e4ace86, type: 2}
 --- !u!4 &2095902686
 Transform:

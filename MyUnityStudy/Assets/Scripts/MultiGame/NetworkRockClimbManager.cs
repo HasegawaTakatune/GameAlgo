@@ -8,6 +8,9 @@ public class NetworkRockClimbManager : Photon.MonoBehaviour,Game_RecieveInterfac
 	Text TimeCount;
 	Text CountDown;
 	Text TimeScore;
+	AudioSource audioSource;
+	[SerializeField]AudioClip BattleBGM;
+	[SerializeField]AudioClip BreakTimeBGM;
 
 	public enum STATUS{Wait,CountDown,Play,End}
 	STATUS status = STATUS.Wait;
@@ -23,6 +26,8 @@ public class NetworkRockClimbManager : Photon.MonoBehaviour,Game_RecieveInterfac
 		TimeCount = GameObject.Find ("TimeCount").GetComponent<Text> ();
 		CountDown = GameObject.Find ("CountDown").GetComponent<Text> ();
 		TimeScore = GameObject.Find ("TimeScore").GetComponent<Text> ();
+		audioSource = GetComponent<AudioSource> ();
+		audioSource.PlayOneShot (BreakTimeBGM);
 	}
 	
 
@@ -33,7 +38,6 @@ public class NetworkRockClimbManager : Photon.MonoBehaviour,Game_RecieveInterfac
 		switch (status) {
 		case STATUS.Wait:
 			if (Input.GetKeyDown (KeyCode.Return) && playerCreated) {
-				//status = STATUS.CountDown;
 				photonView.RPC ("syncGameStatus", PhotonTargets.All, STATUS.CountDown);
 			}
 			break;
@@ -60,6 +64,8 @@ public class NetworkRockClimbManager : Photon.MonoBehaviour,Game_RecieveInterfac
 	}
 
 	IEnumerator StartMessage(){
+		audioSource.Stop ();
+		audioSource.PlayOneShot (BattleBGM);
 		playerCount = GameObject.FindGameObjectsWithTag ("Player").Length;
 		timer = 0;
 		status = STATUS.Play;
@@ -76,6 +82,8 @@ public class NetworkRockClimbManager : Photon.MonoBehaviour,Game_RecieveInterfac
 
 	public void PlayerGoal(Player player){
 		if (!player.Goal) {
+			audioSource.Stop ();
+			audioSource.PlayOneShot (BattleBGM);
 			photonView.RPC ("syncPlayerGoal", PhotonTargets.AllBuffered, player.Name);
 			player.Goal = true;
 		}
