@@ -545,7 +545,7 @@ Transform:
   m_GameObject: {fileID: 2036040969}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 70, z: 10}
-  m_LocalScale: {x: 60, y: 60, z: 1}
+  m_LocalScale: {x: 100, y: 100, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -581,7 +581,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Block: {fileID: 1000011250369868, guid: 7fb03b2f56b73dc488b0d3a5b724171d, type: 2}
-  BlockX: {fileID: 1630474338421348, guid: 4715b28580059954aa59f7349e9268df, type: 2}
+  BlockSP: {fileID: 1630474338421348, guid: 4715b28580059954aa59f7349e9268df, type: 2}
   Goal: {fileID: 1353941382194024, guid: 21415498432a8ee47add2b990e4ace86, type: 2}
 --- !u!4 &2095902686
 Transform:

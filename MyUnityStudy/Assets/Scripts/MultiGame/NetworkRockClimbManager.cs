@@ -1,9 +1,15 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// <para>クラス名　:　NetworkRockClimbManager</para>
+/// <para>機能　　　:　ゲームマネージャー</para>
+/// <para>				ゲームステータスの制御・切り替えをする</para>
+/// </summary>
 public class NetworkRockClimbManager : Photon.MonoBehaviour,Game_RecieveInterface {
 	Text TimeCount;
 	Text CountDown;
@@ -54,11 +60,11 @@ public class NetworkRockClimbManager : Photon.MonoBehaviour,Game_RecieveInterfac
 			break;
 
 		case STATUS.End:
-			CountDown.text = "\"ENTER\"";
-			if (Input.GetKeyDown (KeyCode.Return)) {
+			CountDown.text = "\"Game End\"";
+			StartCoroutine (Delay (() => {
 				SendMessage ("ToExit");
 				SceneManager.LoadScene ("Menu");
-			}
+			}));
 			break;
 		}
 	}
@@ -77,13 +83,18 @@ public class NetworkRockClimbManager : Photon.MonoBehaviour,Game_RecieveInterfac
 	}
 
 	void PlayerCreatedMessage(){
-		playerCreated = true;
+		StartCoroutine (Delay (() => playerCreated = true));
+	}
+
+	IEnumerator Delay(Action ac){
+		yield return new WaitForSeconds (3);
+		ac ();
 	}
 
 	public void PlayerGoal(Player player){
 		if (!player.Goal) {
 			audioSource.Stop ();
-			audioSource.PlayOneShot (BattleBGM);
+			audioSource.PlayOneShot (BreakTimeBGM);
 			photonView.RPC ("syncPlayerGoal", PhotonTargets.AllBuffered, player.Name);
 			player.Goal = true;
 		}

@@ -170,12 +170,13 @@ public class Player : MonoBehaviour {
 				jumpType = (isGrounded)? Ground : (R_Hit == true) ? R_Jump : (L_Hit == true) ? L_Jump : None;
 
 				// ジャンプのタイプごとに、どの方向の壁で特殊壁の判定をするかを決める
-				if ((jumpType == R_Jump) ? R_Hit.collider.GetComponent<Ground> ().IsSpecial :
-					(jumpType == L_Jump) ? L_Hit.collider.GetComponent<Ground> ().IsSpecial : false) {
+				// タグで特殊壁の判定をしていたが、ビルド時に認識されなかったため名前で判定するよう変更
+				if ((jumpType == R_Jump) ? R_Hit.collider.gameObject.name == "BlockSP(Clone)" :
+					(jumpType == L_Jump) ? L_Hit.collider.gameObject.name == "BlockSP(Clone)" : false) {
 					// 特殊壁のジャンプステータスを設定
 					SetSpecialJumpStatus ();
 				} else
-					// 通常壁のじぇんぷステータスを設定
+					// 通常壁のジャンプステータスを設定
 					SetNormalJumpStatus ();
 			}
 		}

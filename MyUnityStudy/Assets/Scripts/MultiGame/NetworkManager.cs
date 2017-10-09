@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// <para>クラス名　:　NetworkManager</para>
+/// <para>機能　　　:　ネットワーク通信の初期設定を行う</para>
+/// <para>マスターサーバーのロビーに入り、ルームを</para>
+/// <para>探索して入室、なければ生成をして入室する。</para>
+/// <para>プレイヤーの名前を設定し生成の順に行う</para>
+/// </summary>
 public class NetworkManager : Photon.MonoBehaviour {
 	// 生成するアイテムのパス
 	[SerializeField]string ResourcePath = "";
@@ -10,38 +17,60 @@ public class NetworkManager : Photon.MonoBehaviour {
 	[SerializeField]Text NoticeText;
 	// 入力した名前の格納場所
 	[SerializeField]Text inputField;
+	// 名前入力インターフェイスのオブジェクト
 	[SerializeField]GameObject inputFieldObj;
-	// 部屋名
+	// ルーム名
 	const string ROOM_NAME = "MultiRoom";
 	// 入室中判定
 	public static bool EnteringTheRoom = false;
-	//
-	Player player;
 
-	/// 初期の呼び出し関数
+	/// <summary>
+	/// <para>関数名:　Start</para>
+	/// <para>機能　:　Photonサーバーへの初期接続処理</para>
+	/// <para>引数　:　なし</para>
+	/// <para>戻り値:　なし</para>
+	/// <summary>
 	void Start () {
-		ConnectPhoton ();	// 初期接続
+		// 初期接続
+		ConnectPhoton ();
+		// 接続中のテキスト表示
 		NoticeText.text = "Connecting...";
 	}
 
-
-
-	/// Photonに接続する最初のおまじない
+	/// <summary>
+	/// <para>関数名:　ConnectPhoton</para>
+	/// <para>機能　:　Photonサーバーに接続する</para>
+	/// <para>引数　:　なし</para>
+	/// <para>戻り値:　なし</para>
+	/// <summary>
 	public void ConnectPhoton(){
+		// Photonサーバーに接続する
 		PhotonNetwork.ConnectUsingSettings ("v1.0");
 	}
-
-	/// マスターサーバーのロビーに入った際に呼ばれる
+		
+	/// <summary>
+	/// <para>関数名:　OnJoinedLobby</para>
+	/// <para>機能　:　マスターサーバーのロビーに入った際のコールバック</para>
+	/// <para>ルーム作成をリクエストする</para>
+	/// <para>引数　:　なし</para>
+	/// <para>戻り値:　なし</para>
+	/// <summary>
 	void OnJoinedLobby(){
-		// 接続後の処理
-
+		// ルームの作成
 		CreateRoom ();
 	}
 
-	/// ルーム作成
+	/// <summary>
+	/// <para>関数名:　CreateRoom</para>
+	/// <para>機能　:　ユーザー・ルーム設定を行い、ルーム作成または入室する</para>
+	/// <para>引数　:　なし</para>
+	/// <para>戻り値:　なし</para>
+	/// <summary>
 	public void CreateRoom(){
+		// ルーム作成中のテキスト表示
 		NoticeText.text = "Creating room...";
 
+		// ユーザー名・IDの設定(ダミーでUnityChanにしている)
 		string userName = "UnityChan";
 		string userId = "UnityChan";
 
@@ -73,51 +102,102 @@ public class NetworkManager : Photon.MonoBehaviour {
 		PhotonNetwork.JoinOrCreateRoom(ROOM_NAME,roomOptions,null);
 	}
 
-	/// ルーム参加呼び出し
+	/// <summary>
+	/// <para>関数名:　JoinRoom</para>
+	/// <para>機能　:　ルームに参加する</para>
+	/// <para>引数　:　なし</para>
+	/// <para>戻り値:　なし</para>
+	/// <summary>
 	public void JoinRoom(){
-		// ルームの参加
+		// ルーム参加
 		PhotonNetwork.JoinRoom (ROOM_NAME);
 	}
 
-	/// ルーム入室が成功した際に呼ばれるコールバックメソッド
+	/// <summary>
+	/// <para>関数名:　Start</para>
+	/// <para>機能　:　ルーム入室が成功した際に呼ばれるコールバック</para>
+	/// <para>プレイヤーの名前入力インターフェイスを表示する</para>
+	/// <para>引数　:　なし</para>
+	/// <para>戻り値:　なし</para>
+	/// <summary>
 	void OnJoinedRoom(){
+		// 名前入力インターフェイスを表示
 		inputFieldObj.SetActive (true);
+		// 名前入力欄を選択状態にする
 		inputFieldObj.GetComponent<InputField> ().ActivateInputField ();
-		//player = PhotonNetwork.Instantiate (ResourcePath, Vector3.up, Quaternion.identity, 0).GetComponent<Player>();
+		// 入室した判定にする
 		EnteringTheRoom = true;
+		// 名前を尋ねるテキスト表示
 		NoticeText.text = "What's your name?";
 	}
 
-	/// 入力した名前を受け取り、プレイヤー生成をする
+	/// <summary>
+	/// <para>関数名:　OnEndInputFieldEdit</para>
+	/// <para>機能　:　名前を入力し終わった際に呼ばれるコールバック</para>
+	/// <para>入力した名前を反映したプレイヤーを生成する</para>
+	/// <para>引数　:　string editText　入力した名前</para>
+	/// <para>戻り値:　なし</para>
+	/// <summary>
 	public void OnEndInputFieldEdit(string editText){
+		// プレイヤーの入室番号を受け取る
 		int No = PhotonNetwork.countOfPlayersInRooms;
-		player = PhotonNetwork.Instantiate (ResourcePath, Vector3.up, Quaternion.identity, 0).GetComponent<Player>();
+		// プレイヤーの生成
+		Player player = PhotonNetwork.Instantiate (ResourcePath, Vector3.up, Quaternion.identity, 0).GetComponent<Player>();
+		// プレイヤーの名前を設定
 		player.Name = inputField.text;
+		// 名前入力インターフェイスを非表示にする
 		inputFieldObj.SetActive (false);
-
+		// エンターキーの入力を促す
 		NoticeText.text = "\"ENTER\"";
+		// プレイヤーを生成したメッセージを送る
 		SendMessage ("PlayerCreatedMessage");
 	}
 
-	/// Photonサーバーへの接続が失敗した際のコールバック
+	/// <summary>
+	/// <para>関数名:　OnFaliedToConnectToPhoton</para>
+	/// <para>機能　:　Photonサーバーへの接続が失敗した際のコールバック</para>
+	/// <para>引数　:　なし</para>
+	/// <para>戻り値:　なし</para>
+	/// <summary>
 	void OnFaliedToConnectToPhoton(){
+		// 接続失敗をテキスト表示
 		NoticeText.text = "Connection failure\nConnection to the Photon server is not established.";
 	}
 
-	/// 
+	/// <summary>
+	/// <para>関数名:　ToExit</para>
+	/// <para>機能　:　ルーム退出処理</para>
+	/// <para>引数　:　なし</para>
+	/// <para>戻り値:　なし</para>
+	/// <summary>
 	void ToExit(){
-		PhotonNetwork.Disconnect ();
+		// ルームから退出して、マスターサーバーに戻る
 		PhotonNetwork.LeaveRoom ();
+		// Photonサーバーから回線切断する
+		PhotonNetwork.Disconnect ();
 	}
 
-	/// ロビーを退出した際のコールバック
+	/// <summary>
+	/// <para>関数名:　OnLeftLobby</para>
+	/// <para>機能　:　ロビーを退出した際のコールバック</para>
+	/// <para>引数　:　なし</para>
+	/// <para>戻り値:　なし</para>
+	/// <summary>
 	void OnLeftLobby(){
+		// ロビー退出をログ表示
 		Debug.Log ("Call OnLeftLobby");
 	}
 
-	/// Photonサーバーから切断した際のコールバック
+	/// <summary>
+	/// <para>関数名:　OnDisconnectedFromPhoton</para>
+	/// <para>機能　:　Photonサーバーから切断した際のコールバック</para>
+	/// <para>引数　:　なし</para>
+	/// <para>戻り値:　なし</para>
+	/// <summary>
 	void OnDisconnectedFromPhoton(){
+		// Photonサーバー切断をログ表示
 		Debug.Log ("Call OnDisconnectedFromPhoton");
 	}
 
 }
+/// End of class

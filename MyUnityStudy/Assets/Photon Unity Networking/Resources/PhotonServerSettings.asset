@@ -47,4 +47,6 @@ MonoBehaviour:
   - syncPlayAnimation
   - syncGameStatus
   - syncPlayerGoal
+  - syncPlayerName
+  - syncExitMessage
   DisableAutoOpenWizard: 1

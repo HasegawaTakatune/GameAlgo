@@ -14,7 +14,13 @@ public class NetworkSetting : Photon.MonoBehaviour {
 			player.enabled = true;
 			playerAnimationView.enabled = true;
 			boxcollider2d.enabled = true;
+			photonView.RPC ("syncPlayerName", PhotonTargets.OthersBuffered, player.Name);
 		}
+	}
+
+	[PunRPC]
+	void syncPlayerName(string name){
+		player.Name = name;
 	}
 	
 }

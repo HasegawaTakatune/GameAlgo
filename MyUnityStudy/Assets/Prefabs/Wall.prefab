@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4770719834409032}
   - component: {fileID: 212710863889649786}
   - component: {fileID: 61215806047563232}
-  - component: {fileID: 114908179101425480}
   m_Layer: 8
   m_Name: Ground
   m_TagString: Untagged
@@ -39,7 +38,6 @@ GameObject:
   - component: {fileID: 4785024779631010}
   - component: {fileID: 212129654989398932}
   - component: {fileID: 61172774669230554}
-  - component: {fileID: 114094224169597338}
   m_Layer: 8
   m_Name: Ground
   m_TagString: Untagged
@@ -57,7 +55,6 @@ GameObject:
   - component: {fileID: 4981989397195782}
   - component: {fileID: 212445843980009294}
   - component: {fileID: 61521641337895196}
-  - component: {fileID: 114707925774445838}
   m_Layer: 8
   m_Name: Ground
   m_TagString: Untagged
@@ -75,7 +72,6 @@ GameObject:
   - component: {fileID: 4771511317187502}
   - component: {fileID: 212010258895271928}
   - component: {fileID: 61186960425456338}
-  - component: {fileID: 114260002651879506}
   m_Layer: 8
   m_Name: Ground
   m_TagString: Untagged
@@ -93,7 +89,6 @@ GameObject:
   - component: {fileID: 4855209985411214}
   - component: {fileID: 212673764423538014}
   - component: {fileID: 61473766818356812}
-  - component: {fileID: 114504506958209584}
   m_Layer: 8
   m_Name: Ground
   m_TagString: Untagged
@@ -111,7 +106,6 @@ GameObject:
   - component: {fileID: 4518259882192618}
   - component: {fileID: 212943496614183630}
   - component: {fileID: 61608694223595424}
-  - component: {fileID: 114830981192608604}
   m_Layer: 8
   m_Name: Ground
   m_TagString: Untagged
@@ -129,7 +123,6 @@ GameObject:
   - component: {fileID: 4396606612218728}
   - component: {fileID: 212201046885716274}
   - component: {fileID: 61642565807342830}
-  - component: {fileID: 114104652972925762}
   m_Layer: 8
   m_Name: Ground
   m_TagString: Untagged
@@ -147,7 +140,6 @@ GameObject:
   - component: {fileID: 4770124218482304}
   - component: {fileID: 212504846129596012}
   - component: {fileID: 61137994821188530}
-  - component: {fileID: 114590607701752256}
   m_Layer: 8
   m_Name: Ground
   m_TagString: Untagged
@@ -165,7 +157,6 @@ GameObject:
   - component: {fileID: 4651533447351310}
   - component: {fileID: 212215110063329582}
   - component: {fileID: 61133956929649442}
-  - component: {fileID: 114528991061801472}
   m_Layer: 8
   m_Name: Ground
   m_TagString: Untagged
@@ -183,7 +174,6 @@ GameObject:
   - component: {fileID: 4050672524769334}
   - component: {fileID: 212667529885367736}
   - component: {fileID: 61727570222621306}
-  - component: {fileID: 114300595405253208}
   m_Layer: 8
   m_Name: Ground
   m_TagString: Untagged
@@ -201,7 +191,6 @@ GameObject:
   - component: {fileID: 4035969393195778}
   - component: {fileID: 212990899936323332}
   - component: {fileID: 61716715570918890}
-  - component: {fileID: 114695642761282084}
   m_Layer: 8
   m_Name: Ground
   m_TagString: Untagged
@@ -219,7 +208,6 @@ GameObject:
   - component: {fileID: 4361049750714032}
   - component: {fileID: 212508119171992036}
   - component: {fileID: 61900504084959658}
-  - component: {fileID: 114817957204593434}
   m_Layer: 8
   m_Name: Ground
   m_TagString: Untagged
@@ -237,7 +225,6 @@ GameObject:
   - component: {fileID: 4269223317693640}
   - component: {fileID: 212927631026730930}
   - component: {fileID: 61631799159312192}
-  - component: {fileID: 114695535998735454}
   m_Layer: 8
   m_Name: Ground
   m_TagString: Untagged
@@ -255,7 +242,6 @@ GameObject:
   - component: {fileID: 4235940094592828}
   - component: {fileID: 212540075569783976}
   - component: {fileID: 61978951314977018}
-  - component: {fileID: 114315254964443752}
   m_Layer: 8
   m_Name: Ground
   m_TagString: Untagged
@@ -273,7 +259,6 @@ GameObject:
   - component: {fileID: 4995450884782278}
   - component: {fileID: 212948852730016096}
   - component: {fileID: 61604343083823442}
-  - component: {fileID: 114996819331971336}
   m_Layer: 8
   m_Name: Ground
   m_TagString: Untagged
@@ -291,7 +276,6 @@ GameObject:
   - component: {fileID: 4574435041821374}
   - component: {fileID: 212125430788212016}
   - component: {fileID: 61777704308897868}
-  - component: {fileID: 114198318268582394}
   m_Layer: 8
   m_Name: Ground
   m_TagString: Untagged
@@ -307,7 +291,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4910580134486746}
-  - component: {fileID: 114728541005879920}
   m_Layer: 0
   m_Name: Wall
   m_TagString: Untagged
@@ -952,211 +935,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
---- !u!114 &114094224169597338
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1129617141126918}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ac81b314113f0b45bc0b7a65b148e03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isSpecial: 0
---- !u!114 &114104652972925762
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1411151641683676}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ac81b314113f0b45bc0b7a65b148e03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isSpecial: 0
---- !u!114 &114198318268582394
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1934176806109252}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ac81b314113f0b45bc0b7a65b148e03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isSpecial: 0
---- !u!114 &114260002651879506
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1313376578592628}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ac81b314113f0b45bc0b7a65b148e03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isSpecial: 0
---- !u!114 &114300595405253208
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1683039956712628}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ac81b314113f0b45bc0b7a65b148e03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isSpecial: 0
---- !u!114 &114315254964443752
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1841851447190662}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ac81b314113f0b45bc0b7a65b148e03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isSpecial: 0
---- !u!114 &114504506958209584
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1341012405871590}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ac81b314113f0b45bc0b7a65b148e03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isSpecial: 0
---- !u!114 &114528991061801472
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1623870705096460}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ac81b314113f0b45bc0b7a65b148e03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isSpecial: 0
---- !u!114 &114590607701752256
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1530898755525932}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ac81b314113f0b45bc0b7a65b148e03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isSpecial: 0
---- !u!114 &114695535998735454
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1774004636849838}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ac81b314113f0b45bc0b7a65b148e03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isSpecial: 0
---- !u!114 &114695642761282084
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1695938396334960}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ac81b314113f0b45bc0b7a65b148e03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isSpecial: 0
---- !u!114 &114707925774445838
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1273292272188316}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ac81b314113f0b45bc0b7a65b148e03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isSpecial: 0
---- !u!114 &114728541005879920
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1997387155663250}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 955e255e17c869f45b84133d9581a99f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  WIDTH: 0
-  HEIGHT: 14.2
---- !u!114 &114817957204593434
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1760774846876572}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ac81b314113f0b45bc0b7a65b148e03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isSpecial: 0
---- !u!114 &114830981192608604
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1391486805524008}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ac81b314113f0b45bc0b7a65b148e03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isSpecial: 0
---- !u!114 &114908179101425480
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1037612826826990}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ac81b314113f0b45bc0b7a65b148e03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isSpecial: 0
---- !u!114 &114996819331971336
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1879516016170784}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ac81b314113f0b45bc0b7a65b148e03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isSpecial: 0
 --- !u!212 &212010258895271928
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -1197,6 +975,8 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!212 &212125430788212016
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -1237,6 +1017,8 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!212 &212129654989398932
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -1277,6 +1059,8 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!212 &212201046885716274
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -1317,6 +1101,8 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!212 &212215110063329582
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -1357,6 +1143,8 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!212 &212445843980009294
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -1397,6 +1185,8 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!212 &212504846129596012
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -1437,6 +1227,8 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!212 &212508119171992036
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -1477,6 +1269,8 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!212 &212540075569783976
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -1517,6 +1311,8 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!212 &212667529885367736
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -1557,6 +1353,8 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!212 &212673764423538014
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -1597,6 +1395,8 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!212 &212710863889649786
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -1637,6 +1437,8 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!212 &212927631026730930
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -1677,6 +1479,8 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!212 &212943496614183630
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -1717,6 +1521,8 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!212 &212948852730016096
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -1757,6 +1563,8 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!212 &212990899936323332
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -1797,3 +1605,5 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0

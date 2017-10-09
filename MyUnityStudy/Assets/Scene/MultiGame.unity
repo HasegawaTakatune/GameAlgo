@@ -42,7 +42,7 @@ RenderSettings:
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 9
+  serializedVersion: 11
   m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
@@ -54,7 +54,7 @@ LightmapSettings:
     m_EnableBakedLightmaps: 0
     m_EnableRealtimeLightmaps: 0
   m_LightmapEditorSettings:
-    serializedVersion: 8
+    serializedVersion: 9
     m_Resolution: 2
     m_BakeResolution: 40
     m_TextureWidth: 1024
@@ -71,7 +71,7 @@ LightmapSettings:
     m_FinalGatherFiltering: 1
     m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
-    m_MixedBakeMode: 3
+    m_MixedBakeMode: 2
     m_BakeBackend: 0
     m_PVRSampling: 1
     m_PVRDirectSampleCount: 32
@@ -87,7 +87,7 @@ LightmapSettings:
     m_PVRFilteringAtrousNormalSigma: 1
     m_PVRFilteringAtrousPositionSigma: 1
   m_LightingDataAsset: {fileID: 0}
-  m_ShadowMaskMode: 2
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -506,6 +506,8 @@ SpriteRenderer:
   m_Size: {x: 3.2, y: 2.4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!4 &2036040971
 Transform:
   m_ObjectHideFlags: 0
@@ -514,7 +516,7 @@ Transform:
   m_GameObject: {fileID: 2036040969}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 70, z: 10}
-  m_LocalScale: {x: 70, y: 70, z: 1}
+  m_LocalScale: {x: 100, y: 100, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -532,6 +534,7 @@ GameObject:
   - component: {fileID: 2095902688}
   - component: {fileID: 2095902687}
   - component: {fileID: 2095902685}
+  - component: {fileID: 2095902691}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -601,23 +604,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2095902684}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1dada4a9bd360f14ab116b3151de743c, type: 3}
+  m_Script: {fileID: 11500000, guid: cf533bb23ce11a842ac13cb623b196b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Wall:
-  - {fileID: 1997387155663250, guid: 4b75e4304c8557c4c96140747d0e481e, type: 2}
-  - {fileID: 1997387155663250, guid: d61fe6584d1d7744793202ecf1d6c1c7, type: 2}
-  Ground:
-  - {fileID: 1871180859188536, guid: 99317ee8b2828e543820722cfa282f1c, type: 2}
-  - {fileID: 1512080606425804, guid: fcd12668159657f4e8c7aca487c1fce8, type: 2}
-  Goal: {fileID: 1353941382194024, guid: 21415498432a8ee47add2b990e4ace86, type: 2}
-  WallPath:
-  - SP_Wall1
-  - SP_Wall2
-  GroundPath:
-  - Ground
-  - GroundTurn
-  GoalPath: GroundGoal
+  Block: Block
+  BlockSP: BlockSP
+  Goal: Goal
 --- !u!114 &2095902689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -629,8 +621,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12e60acf38c1cf74b9ee289befbde4dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BattleBGM: {fileID: 0}
-  BreakTimeBGM: {fileID: 0}
+  BattleBGM: {fileID: 8300000, guid: 0c5eaf742170c6242b2cdfffe055c211, type: 3}
+  BreakTimeBGM: {fileID: 8300000, guid: 832a79153d5c0c8478f7e6f5efc487b8, type: 3}
 --- !u!114 &2095902690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -642,3 +634,83 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ed3d4859eafb9d46b4e14cca1339c1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &2095902691
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2095902684}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
