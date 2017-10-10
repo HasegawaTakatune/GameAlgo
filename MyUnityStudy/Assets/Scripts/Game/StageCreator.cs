@@ -9,16 +9,13 @@ using UnityEngine;
 public class StageCreator : MonoBehaviour {
 
 	// 床・壁ブロック
-	[SerializeField]GameObject Block;
+	[SerializeField]string block = "Block";
 	// 特殊壁ブロック
-	[SerializeField]GameObject BlockSP;
+	[SerializeField]string blockSP = "BlockSP";
 	// ゴール
-	[SerializeField]GameObject Goal;
+	[SerializeField]string goal = "Goal";
 
-	// 生成物の種分け
-	const byte WALL=0,GROUND=1,GOAL=2;
-	// 実際に生成するオブジェクトのタイプ
-	byte createType = WALL;
+	/// 変数をローカルで宣言することで、メモリの圧迫をステージ生成時のみに集中させる
 
 	/// <summary>
 	/// <para>関数名:　CreateStage</para>
@@ -28,6 +25,14 @@ public class StageCreator : MonoBehaviour {
 	/// <para>戻り値:　なし</para>
 	/// </summary>
 	public void CreateStage(){
+		// リソースフォルダから生成する各オブジェクトを取得する
+		GameObject Block = Resources.Load(block,typeof(GameObject))as GameObject;
+		GameObject BlockSP = Resources.Load(blockSP,typeof(GameObject))as GameObject;
+		GameObject Goal = Resources.Load(goal,typeof(GameObject))as GameObject;
+		// 生成物の種分け
+		const byte WALL=0,GROUND=1,GOAL=2;
+		// 実際に生成するオブジェクトのタイプ
+		byte createType = WALL;
 		// 生成ポジション
 		Vector2 pos = new Vector2 (0, 2);
 		// 生成の回数（数字には意味がなく、ただカウントするだけ）
@@ -78,7 +83,10 @@ public class StageCreator : MonoBehaviour {
 				// 高さが100以上まで達した時、ゴールの生成をする
 				if (pos.y >= 100) {
 					createType = GOAL;
-				} else {// それ以外、					
+					// 方向転換するための壁を生成
+					for (int ii = 0; ii <= 4; ii++)
+						Instantiate (Block, pos + new Vector2 (6, ii * 2), Quaternion.Euler (new Vector3 (0, 0, 90)));
+				} else {// それ以外、
 					// 生成タイプの設定
 					byte type = (Random.Range (0, 2) == 0) ? WALL : GROUND;
 					// 生成タイプが変更した時
@@ -92,6 +100,13 @@ public class StageCreator : MonoBehaviour {
 						} else {
 							// 生成する方向の設定
 							direc = (Random.Range (0, 2) == 0) ? true : false;
+							// 生成する壁の位置
+							float xx = (direc) ? 0 : 6;
+							// 生成する壁の向き
+							Quaternion qq = (direc) ? Quaternion.Euler (new Vector3 (0, 0, -90)) : Quaternion.Euler (new Vector3 (0, 0, 90));
+							// 方向転換するための壁を生成
+							for (int ii = 0; ii <= 4; ii++)
+								Instantiate (Block, pos + new Vector2 (xx, ii * 2), qq);
 							// 生成ポジションの調整
 							pos.x += (direc) ? 6 : 0;
 						}

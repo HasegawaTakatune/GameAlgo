@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+[RequireComponent(typeof(PhotonView))]
 
 /// <summary>
 /// <para>クラス名　:　NetworkManager</para>

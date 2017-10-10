@@ -129,6 +129,7 @@
      <Compile Include="Assets\Scripts\Game\RockClimbManager.cs" />
      <Compile Include="Assets\Scripts\Game\RockClimbManagerInterface.cs" />
      <Compile Include="Assets\Scripts\Game\StageCreator.cs" />
+     <Compile Include="Assets\Scripts\GameStatus.cs" />
      <Compile Include="Assets\Scripts\Manu\CameraScroll.cs" />
      <Compile Include="Assets\Scripts\Manu\MenuManager.cs" />
      <Compile Include="Assets\Scripts\Manu\SelectionMenu.cs" />
@@ -140,7 +141,6 @@
      <Compile Include="Assets\Scripts\MultiGame\SyncPosition.cs" />
      <None Include="Assets\Photon Unity Networking\link.xml" />
      <None Include="Assets\Plugins\Photon3Unity3D.xml" />
-     <None Include="Assets\Text.txt" />
      <None Include="Assets\Plugins\release_history.txt" />
      <None Include="Assets\Photon Unity Networking\readme.txt" />
      <None Include="Assets\Photon Unity Networking\changelog.txt" />

@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 /// <summary>
 /// <para>クラス名　:　RockClimbManager</para>
 /// <para>機能　　　:　ゲームマネージャー</para>
-/// <para>				ゲームステータスの制御・切り替えをする</para>
+/// <para>ゲームステータスの制御・切り替えをする</para>
 /// </summary>
 public class RockClimbManager : MonoBehaviour,Game_RecieveInterface {
 	// ゲームタイマー表示テキスト
@@ -67,8 +67,9 @@ public class RockClimbManager : MonoBehaviour,Game_RecieveInterface {
 
 		case STATUS.Wait:// 待機状態
 			// エンターキーを押した時、スタートカウントダウンを開始する
-			if (Input.GetKeyDown (KeyCode.Return))
+			if (Input.GetKeyDown (KeyCode.Return)) {
 				status = STATUS.CountDown;
+			}
 			break;
 
 		case STATUS.CountDown:// スタートカウントダウン
@@ -82,7 +83,7 @@ public class RockClimbManager : MonoBehaviour,Game_RecieveInterface {
 			break;
 
 		case STATUS.Play:// レース中状態
-			// レース中のタイマーテキストに経過時間を表示
+			// タイマーテキストに経過時間を表示
 			TimeCount.text = (Mathf.Floor (timer * 100) / 100).ToString ();
 			break;
 
