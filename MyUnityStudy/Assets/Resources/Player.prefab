@@ -327,7 +327,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameLabel: {fileID: 114679948175695018}
-  speed: 0.1
   jumpSpeed: 0.65
   kickSpeed: 0.055
   sp_JumpEffect: {fileID: 1131768544183236, guid: 251a00f2ff449bc4e805894e847d51ae,
@@ -428,7 +427,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 37426dfe5cfb14626a6e1c60f8d927eb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -437,6 +436,8 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!222 &222838560961881616
 CanvasRenderer:
   m_ObjectHideFlags: 1
