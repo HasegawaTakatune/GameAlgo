@@ -111,12 +111,14 @@ public class NetworkRockClimbManager : Photon.MonoBehaviour,Game_RecieveInterfac
 	/// <para>戻り値:　なし</para>
 	/// </summary>
 	IEnumerator StartMessage(){
+		// ルーム接続を切る
+		PhotonNetwork.room.IsOpen = false;
 		// 今のBGMを止める
 		audioSource.Stop ();
 		// レース時のBGMを再生
 		audioSource.PlayOneShot (BattleBGM);
 		// スタート時のプレイヤー人数を求める
-		playerCount = GameObject.FindGameObjectsWithTag ("Player").Length;
+		playerCount = PhotonNetwork.room.PlayerCount;
 		// 経過時間を初期化
 		timer = 0;
 		// ゲームステータスをスタートに変更

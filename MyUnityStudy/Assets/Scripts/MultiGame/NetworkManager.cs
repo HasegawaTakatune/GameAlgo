@@ -172,8 +172,6 @@ public class NetworkManager : Photon.MonoBehaviour {
 	/// <para>戻り値:　なし</para>
 	/// <summary>
 	void ToExit(){
-		// ルームから退出して、マスターサーバーに戻る
-		PhotonNetwork.LeaveRoom ();
 		// Photonサーバーから回線切断する
 		PhotonNetwork.Disconnect ();
 	}

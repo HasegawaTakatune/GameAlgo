@@ -34,7 +34,7 @@ public class SyncPosition : Photon.MonoBehaviour {
 			// 座標の取得
 			Vector3 nowPos = transform.position;
 			// 座標に差ができた時
-			if (Vector3.Distance (nowPos, lastPos) > 0.5f) {
+			if (Vector3.Distance (nowPos, lastPos) > 0.3f) {
 				// 座標を同期する
 				photonView.RPC ("syncPosition", PhotonTargets.Others, nowPos);
 				// 最後に同期した座標を更新
