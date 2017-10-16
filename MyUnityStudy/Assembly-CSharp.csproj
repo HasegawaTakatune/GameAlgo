@@ -125,7 +125,6 @@
      <Compile Include="Assets\Scripts\Game\GoalFlag.cs" />
      <Compile Include="Assets\Scripts\Game\Player.cs" />
      <Compile Include="Assets\Scripts\Game\PlayerAnimationView.cs" />
-     <Compile Include="Assets\Scripts\Game\PlayerPrefsX.cs" />
      <Compile Include="Assets\Scripts\Game\RockClimbManager.cs" />
      <Compile Include="Assets\Scripts\Game\RockClimbManagerInterface.cs" />
      <Compile Include="Assets\Scripts\Game\StageCreator.cs" />

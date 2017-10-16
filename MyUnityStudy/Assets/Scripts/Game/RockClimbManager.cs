@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -29,8 +30,6 @@ public class RockClimbManager : MonoBehaviour,Game_RecieveInterface {
 	// レース中のタイマー
 	float timer = 0;
 	public float Timer{get{ return timer;}}
-	// ゴールした人数
-	int GoalCount = 0;
 
 	/// <summary>
 	/// <para>関数名:　Start</para>
@@ -67,9 +66,8 @@ public class RockClimbManager : MonoBehaviour,Game_RecieveInterface {
 
 		case STATUS.Wait:// 待機状態
 			// エンターキーを押した時、スタートカウントダウンを開始する
-			if (Input.GetKeyDown (KeyCode.Return)) {
+			if (Input.GetKeyDown (KeyCode.Return))
 				status = STATUS.CountDown;
-			}
 			break;
 
 		case STATUS.CountDown:// スタートカウントダウン
@@ -79,7 +77,7 @@ public class RockClimbManager : MonoBehaviour,Game_RecieveInterface {
 			CountDown.text = t.ToString ();
 			// カウントが0になった時、スタートメッセージを呼ぶ
 			if (t <= 0)
-				StartCoroutine (StartMessage ());
+				StartCoroutine ("StartMessage");
 			break;
 
 		case STATUS.Play:// レース中状態
@@ -89,10 +87,12 @@ public class RockClimbManager : MonoBehaviour,Game_RecieveInterface {
 
 		case STATUS.End:// レース終了後の状態
 			// テキストでエンターキー入力を誘導
-			CountDown.text = "\"ENTER\"";
-			// エンターキーが押された時、メニューに戻る
-			if (Input.GetKeyDown (KeyCode.Return))
-				SceneManager.LoadScene ("Menu");
+			CountDown.text = "\"Game End\"";
+			// 時間経過でルーム退出する(通信切断のタイミングを合わせるため)
+			StartCoroutine (Delay (3,() => {
+				SendMessage ("ToExit",SendMessageOptions.DontRequireReceiver);// 退出メッセージを呼ぶ
+				SceneManager.LoadScene ("Menu");// メニュー画面に戻る
+			}));
 			break;
 		}
 	}
@@ -135,15 +135,27 @@ public class RockClimbManager : MonoBehaviour,Game_RecieveInterface {
 			audioSource.Stop ();
 			// レース後のBGMを再生
 			audioSource.PlayOneShot (BreakTimeBGM);
-			// ゴールした人数を加算
-			GoalCount++;
 			// 順位と経過時間を表示
-			TimeScore.text += GoalCount + "位 : " + player.Name + "Time : " + (Mathf.Floor (timer * 100) / 100) + "秒\n";
+			TimeScore.text += 1 + "位 : " + player.Name + "Time : " + (Mathf.Floor (timer * 100) / 100) + "秒\n";
 			// プレイヤーをゴール後状態にする
 			player.Goal = true;
 			// ゲームステータスをレース終了後状態にする
 			status = STATUS.End;
 		}
+	}
+
+	/// <summary>
+	/// <para>関数名:	Delay</para>
+	/// <para>機能　:　	渡された処理を遅延させて実行する</para>
+	/// <para>引数　:	float interval 遅延させる時間(秒)</para>
+	/// <para>			Action ac 行いたい処理を記述する</para>
+	/// <para>戻り値:	なし</para>
+	/// </summary>
+	IEnumerator Delay(float interval, Action ac){
+		// 遅延
+		yield return new WaitForSeconds (interval);
+		// 渡された処理の実行
+		ac ();
 	}
 }
 /// End of class

@@ -16,7 +16,6 @@ public class NetworkStageCreator : Photon.MonoBehaviour {
 	[SerializeField]string Goal = "Goal";
 
 	/// 変数をローカルで宣言することで、メモリの圧迫をステージ生成時のみに集中させる
-
 	/// <summary>
 	/// <para>関数名:　CreateStage</para>
 	/// <para>機能　:　ある程度の高さまで床・壁の生成を行い</para>
@@ -113,5 +112,6 @@ public class NetworkStageCreator : Photon.MonoBehaviour {
 			}
 		}
 	}
+		
 }
 /// End of class

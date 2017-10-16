@@ -83,8 +83,8 @@ public class NetworkRockClimbManager : Photon.MonoBehaviour,Game_RecieveInterfac
 			// カウントダウンをテキスト表示
 			CountDown.text = t.ToString ();
 			// カウントが0になった時、スタートメッセージを呼ぶ
-			if (t <= 0)
-				StartCoroutine (StartMessage ());
+			if (t <= 0) 
+				StartCoroutine ("StartMessage");
 			break;
 
 		case STATUS.Play:// レース中状態
@@ -97,7 +97,7 @@ public class NetworkRockClimbManager : Photon.MonoBehaviour,Game_RecieveInterfac
 			CountDown.text = "\"Game End\"";
 			// 時間経過でルーム退出する(通信切断のタイミングを合わせるため)
 			StartCoroutine (Delay (3,() => {
-				SendMessage ("ToExit");// 退出メッセージを呼ぶ
+				SendMessage ("ToExit",SendMessageOptions.DontRequireReceiver);// 退出メッセージを呼ぶ
 				SceneManager.LoadScene ("Menu");// メニュー画面に戻る
 			}));
 			break;
@@ -117,10 +117,10 @@ public class NetworkRockClimbManager : Photon.MonoBehaviour,Game_RecieveInterfac
 		audioSource.Stop ();
 		// レース時のBGMを再生
 		audioSource.PlayOneShot (BattleBGM);
-		// スタート時のプレイヤー人数を求める
-		playerCount = PhotonNetwork.room.PlayerCount;
 		// 経過時間を初期化
 		timer = 0;
+		// スタート時のプレイヤー人数を求める
+		playerCount = PhotonNetwork.room.PlayerCount;
 		// ゲームステータスをスタートに変更
 		status = STATUS.Play;
 		// スタートテキスト表示
